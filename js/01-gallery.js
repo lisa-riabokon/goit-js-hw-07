@@ -22,8 +22,9 @@ function createImageCardsMarkup(images) {
     <a class="gallery__link" href="${original}">
     <img
     class="gallery__image"
-    src = "${preview}"
-    alt = "${description}"/>
+    src ="${preview}"
+    data-source ="${original}"
+    alt ="${description}"/>
     </a>
     </div>
     `;
@@ -45,6 +46,47 @@ function onGalleryContainerClick(evt) {
   if (evt.target.nodeName !== "IMG") {
     return;
   }
-  console.log(evt.target);
+
+  // додаю в змінну подію з атрибутом data-source
+  const selectedImg = evt.target.getAttribute("data-source");
+
+  // ------------------------------------------------
+  const template = basicLightbox.create(`
+    <img src="${selectedImg}" width="800" height="600">
+`);
+
+  template.show();
+  console.log(selectedImg);
+  // console.log(template);
+
+  // ------------------------------------------------
+
+  // створення модального вікна з вибраним зображенням
+  // const modalWindowOpen = basicLightbox.create(
+  //   `<img src="${selectedImg}" width="800" height="600">`,
+  //   {
+  //     onShow: () => {
+  //       document.addEventListener("keydown", onModalClose);
+  //     },
+  //     onClose: () => {
+  //       document.addEventListener("keydown", onModalClose);
+  //     },
+  //   }
+  // );
+
+  // modalWindowOpen.show();
+  // console.log(selectedImg);
+  // console.log(modalWindowOpen);
+
+  // function onModalClose(evt) {
+  //   if (evt.key === "Escape") {
+  //     modalWindowOpen.close();
+  //   }
+  // }
+
+  // console.log(evt.target);
 }
 // ----------------------------------------------
+// Додавання нового класу, в задачі не треба
+// const imageEl = evt.target;
+// imageEl.classList.add("new-class");
