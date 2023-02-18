@@ -42,7 +42,6 @@ function onGalleryContainerClick(evt) {
   // додаю в змінну подію з атрибутом data-source
   const selectedImg = evt.target.getAttribute("data-source");
 
-  // ------------------------------------------------
   // створення модального вікна з вибраним зображенням
   const modalWindowOpen = basicLightbox.create(
     `<img src="${selectedImg}" width="800" height="600">`,
